@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ComentarioService } from 'src/app/services/comentario.service';
+import { LoginService } from 'src/app/services/login.service';
 import { TopicoService } from 'src/app/services/topico.service';
 
 @Component({
@@ -9,6 +10,8 @@ import { TopicoService } from 'src/app/services/topico.service';
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit {
+
+  isUsuarioLogado: Boolean = false;
 
   textoComentario: string = '';
 
@@ -20,7 +23,10 @@ export class DetailComponent implements OnInit {
     'data': []
   };
 
-  constructor(private route: ActivatedRoute, private topicoService: TopicoService, private comentarioService: ComentarioService) {}
+  constructor(private route: ActivatedRoute,
+              private topicoService: TopicoService,
+              private comentarioService: ComentarioService,
+              private loginService: LoginService) {}
 
   buscarTopico(idTopico: string){
     this.topicoService.buscarPorId(idTopico).subscribe(data => {
@@ -43,9 +49,14 @@ export class DetailComponent implements OnInit {
     });
   }
 
+  validarUsuarioLogado(){
+    return this.loginService.isLogado()
+  }
+
   public ngOnInit(): void {
     let idTopico = this.route.snapshot.params["id"];
     this.buscarTopico(idTopico);
     this.buscarComentarios(idTopico);
+    this.isUsuarioLogado = this.validarUsuarioLogado();
   }
 }

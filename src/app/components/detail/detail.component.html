@@ -8,7 +8,8 @@
   </mat-card-content>
 
   <mat-card-footer class="example-card-footer">
-    <mat-card-actions>
+
+    <mat-card-actions *ngIf="isUsuarioLogado">
       <mat-form-field>
         <mat-label>Deixa seu comentário aqui</mat-label>
         <textarea matInput [(ngModel)]="textoComentario"></textarea>
@@ -28,5 +29,6 @@
         <mat-card-content>{{comentario.texto}}</mat-card-content>
       </mat-card>
     </mat-card>
+
   </mat-card-footer>
 </mat-card>

@@ -17,7 +17,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { TopicComponent } from './components/topic/topic.component';
-
+import { LoginComponent } from './components/login/login.component';
+import { CadastrarLoginComponent } from './components/cadastrar-login/cadastrar-login.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import { TopicComponent } from './components/topic/topic.component';
     FooterComponent,
     HomeComponent,
     DetailComponent,
-    TopicComponent
+    TopicComponent,
+    LoginComponent,
+    CadastrarLoginComponent
   ],
   imports: [
     BrowserModule,

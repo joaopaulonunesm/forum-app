@@ -3,4 +3,7 @@
     <mat-icon>home</mat-icon>
   </button>
   <span>Fórum</span>
+  <button *ngIf="!isUsuarioLogado" mat-icon-button routerLink="/login">
+    <mat-icon>login</mat-icon>
+  </button>
 </mat-toolbar>

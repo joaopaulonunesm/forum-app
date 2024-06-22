@@ -3,6 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { DetailComponent } from './components/detail/detail.component';
 import { TopicComponent } from './components/topic/topic.component';
+import { LoginComponent } from './components/login/login.component';
+import { CheckboxRequiredValidator } from '@angular/forms';
+import { CadastrarLoginComponent } from './components/cadastrar-login/cadastrar-login.component';
 
 const routes: Routes = [
   {
@@ -16,6 +19,14 @@ const routes: Routes = [
   {
     path: 'topic',
     component: TopicComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'cadastrar-login',
+    component: CadastrarLoginComponent
   }
 ];
 

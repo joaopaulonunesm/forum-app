@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { TokenService } from './token.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class TopicoService {
 
   endpoint: string = this.baseUrl + '/topicos';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private tokenService: TokenService) { }
 
   buscarTodos(){
     return this.http.get(this.endpoint);
@@ -21,6 +22,10 @@ export class TopicoService {
   }
 
   publicar(topicoRequest: any){
-    return this.http.post(this.endpoint, topicoRequest);
+    return this.http.post(this.endpoint, topicoRequest, {
+      headers: {
+        'Authorization': this.tokenService.buscarTokenDaSessao(),
+      }
+    });
   }
 }
